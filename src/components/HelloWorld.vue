@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:28
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-04 23:32:30
+ * @LastEditTime: 2022-04-06 23:43:19
 -->
 <template>
   <div class="hello" @click="getChangeColor">
@@ -15,7 +15,9 @@
 </template>
 
 <script>
-import { ref, reactive } from 'vue'
+import { ref, reactive, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
+
 export default {
   name: 'HelloWorld',
   props: ['msg'],
@@ -31,7 +33,8 @@ export default {
   //   }
   // },
   setup(props, context) {
-    // console.log('HelloWord-setup::',this, props);
+    console.log('HelloWord-setup::',props);
+    const router = useRouter();
     /* 定义数据 */
     let txtList = [
       '读很多的书，走很远的路，见很多的人。',
@@ -44,6 +47,11 @@ export default {
     let getChangeColor = () =>{
       // console.log(context, this);
       context.emit('changeColor', '666')
+      // const { ctx } = getCurrentInstance();
+      console.log(router);
+      router.push({
+        path: '/test'
+      })
     }
     let changeText = () =>{
       mainTxt.value = txtList[Math.floor( (Math.random() * txtList.length) )]
