@@ -1,3 +1,9 @@
+<!--
+ * @Author: niumengfei
+ * @Date: 2022-04-01 18:25:27
+ * @LastEditors: niumengfei
+ * @LastEditTime: 2022-04-11 23:12:44
+-->
 <!DOCTYPE html>
 <html lang="">
   <head>
@@ -5,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- 配置markdown语法高亮和行号显示样式 -->
+    <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-lakeside-dark.min.css" rel="stylesheet"/>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
@@ -13,5 +21,10 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    
+    <script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+    <script src="//cdn.bootcss.com/highlightjs-line-numbers.js/1.1.0/highlightjs-line-numbers.min.js"></script>
+    <!-- <script>hljs.initLineNumbersOnLoad();</script> -->
   </body>
 </html>

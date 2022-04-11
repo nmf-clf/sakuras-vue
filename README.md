@@ -28,3 +28,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 + less-loader：支持使用less编写样式
 + vue：@3版本，vue核心功能库
 + vue-router：@4版本，vue路由核心库
++ github-markdown-css：md文件的样式
++ highlightjs-line-numbers.js：md语法高亮，行号显示
+
+### devDependencies说明
++ html-loader：将 HTML 导出为字符串。当编译器需要时，HTML 会被最小化。
++ markdown-loader：将md文件编译为html
+
+```js
+var a = 1;
+console.log(123)
+```

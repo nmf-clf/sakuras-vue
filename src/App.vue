@@ -2,19 +2,22 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-04 23:31:41
+ * @LastEditTime: 2022-04-11 23:17:31
 -->
+<!-- <HelloWorld ref="helloWord" @changeColor='changeColor' msg="Welcome to Your Vue.js App"/> -->
 <template>
-  <HelloWorld ref="helloWord" @changeColor='changeColor' msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld
   },
   setup(props) {
     function changeColor(val){
@@ -31,5 +34,8 @@ export default {
 </script>
 
 <style>
-
+#app{
+  /* width: 100%; */
+  /* min-height: 100vh; */
+}
 </style>
