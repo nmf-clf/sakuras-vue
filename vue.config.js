@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-12 21:38:47
+ * @LastEditTime: 2022-04-14 01:27:41
  */
 const { defineConfig } = require('@vue/cli-service')
 /* 配置按需加载 */
@@ -22,7 +22,15 @@ module.exports = defineConfig({
       alias: {
         '@': path.join(__dirname, 'src'), //resolve('src')
       }
-    }
+    },
+    plugins: [
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
+    ],
   },
   chainWebpack: config => {
     config.module
@@ -36,12 +44,13 @@ module.exports = defineConfig({
       .loader('markdown-loader')
       .end()
   },
-  pluginOptions: {
-    AutoImport: AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components: Components({
-      resolvers: [ElementPlusResolver()],
-    }),
-  },
+  /* 第三方插件配置 */
+  // pluginOptions: {
+  //   AutoImport: AutoImport({
+  //     resolvers: [ElementPlusResolver()],
+  //   }),
+  //   Components: Components({
+  //     resolvers: [ElementPlusResolver()],
+  //   }),
+  // },
 })

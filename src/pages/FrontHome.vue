@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-13 23:22:05
+ * @LastEditTime: 2022-04-14 01:37:50
 -->
 <!--
  * @Author: niumengfei
@@ -12,6 +12,7 @@
 -->
 <template>
   <div class="common-layout">
+    <el-button type="primary">12553</el-button>
     <!-- <el-container>
       <el-header>Header</el-header>
       <el-main>Main</el-main>
@@ -30,14 +31,10 @@
 <script>
 import { ref, reactive, getCurrentInstance } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElConfigProvider } from 'element-plus'
 
 export default {
   name: 'FrontHome',
   props: ['msg'],
-  components: {
-    ElConfigProvider,
-  },
   setup(props, context) {
     console.log('HelloWord-setup::',props);
     const router = useRouter();

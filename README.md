@@ -35,5 +35,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### devDependencies说明
 + html-loader：将 HTML 导出为字符串。当编译器需要时，HTML 会被最小化。
 + markdown-loader：将md文件编译为html
-+ unplugin-auto-import: 按需引入配置
-+ unplugin-vue-components：按需引入配置
++ unplugin-auto-import: 官方按需引入配置
++ unplugin-vue-components：官方按需引入配置
++ babel-plugin-component：vue2官方按需加载配置
++ babel-plugin-import: 按需加载时候用的？
