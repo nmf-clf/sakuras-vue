@@ -1,37 +1,43 @@
 <!--
  * @Author: niumengfei
+ * @Date: 2022-04-06 23:49:03
+ * @LastEditors: niumengfei
+ * @LastEditTime: 2022-04-13 23:22:05
+-->
+<!--
+ * @Author: niumengfei
  * @Date: 2022-04-01 18:25:28
  * @LastEditors: niumengfei
  * @LastEditTime: 2022-04-06 23:43:19
 -->
 <template>
-  <div class="hello" @click="getChangeColor">
+  <div class="common-layout">
+    <!-- <el-container>
+      <el-header>Header</el-header>
+      <el-main>Main</el-main>
+    </el-container> -->
+  </div>
+  <!-- <div class="frontHome" @click="getChangeColor">
     <h2>Hello，sakuras!</h2>
     <h2>Goodbye Friends!</h2>
     <h1 @click="changeText">{{mainTxt}}</h1>
-    <!-- Copyright © 2018-2022  关于我们-->
     <a href="https://beian.miit.gov.cn/">豫ICP备20014071号-1</a>
-  </div>
+  </div> -->
+
+  <!-- Copyright © 2018-2022  关于我们-->
 </template>
 
 <script>
 import { ref, reactive, getCurrentInstance } from 'vue'
 import { useRouter } from 'vue-router'
+import { ElConfigProvider } from 'element-plus'
 
 export default {
-  name: 'HelloWorld',
+  name: 'FrontHome',
   props: ['msg'],
-  // data() {
-  //   console.log('HelloWord-data...',this.mainTxt);
-  //   return {
-  //     name: '555',
-  //     txtList: [
-  //       '读很多的书，走很远的路，见很多的人',
-  //       '为天地立心，为生民立命，为往圣继绝学，为万世开太平',
-  //       '悟已往之不谏，知来者之可追',
-  //     ]
-  //   }
-  // },
+  components: {
+    ElConfigProvider,
+  },
   setup(props, context) {
     console.log('HelloWord-setup::',props);
     const router = useRouter();
@@ -81,7 +87,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='less' scoped>
-.hello{
+.frontHome{
   width: 60%;
   margin: 10% auto;
   background-color: #f0f0f0;

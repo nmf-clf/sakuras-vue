@@ -2,19 +2,21 @@
  * @Author: niumengfei
  * @Date: 2022-04-04 23:17:24
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-06 23:51:09
+ * @LastEditTime: 2022-04-13 22:46:27
  */
+/* 引入路由模块，和vue2.0方式不同 */
 import { createRouter, createWebHashHistory } from 'vue-router'
 // console.log(createRouter);
 // 1. 定义路由组件 (也可以从其他文件导入)
-import HelloWorld from '../pages/HelloWorld.vue'
-import Test from '../pages/Test.vue'
+// import FrontHome from '../pages/FrontHome.vue'
+import FrontHome from '@/pages/FrontHome.vue'
+import Test from '@/pages/Test.vue'
 
 // 2. 定义一些路由：每个路由都需要映射到一个组件。 我们后面再讨论嵌套路由。
 const routes = [
     { 
         path: '/', 
-        component: HelloWorld 
+        component: FrontHome 
     },{
         path: '/test',
         component: Test    
