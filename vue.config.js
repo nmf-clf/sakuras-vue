@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-14 01:27:41
+ * @LastEditTime: 2022-04-15 00:43:04
  */
 const { defineConfig } = require('@vue/cli-service')
 /* 配置按需加载 */
@@ -23,11 +23,11 @@ module.exports = defineConfig({
         '@': path.join(__dirname, 'src'), //resolve('src')
       }
     },
-    plugins: [
-      AutoImport({
+    plugins: [ 
+      AutoImport({ //配置组件库按需引入(官方)
         resolvers: [ElementPlusResolver()],
       }),
-      Components({
+      Components({ //配置组件库按需引入(官方)
         resolvers: [ElementPlusResolver()],
       }),
     ],
@@ -44,13 +44,4 @@ module.exports = defineConfig({
       .loader('markdown-loader')
       .end()
   },
-  /* 第三方插件配置 */
-  // pluginOptions: {
-  //   AutoImport: AutoImport({
-  //     resolvers: [ElementPlusResolver()],
-  //   }),
-  //   Components: Components({
-  //     resolvers: [ElementPlusResolver()],
-  //   }),
-  // },
 })

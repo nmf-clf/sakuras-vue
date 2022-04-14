@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-04 23:17:24
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-13 22:46:27
+ * @LastEditTime: 2022-04-15 00:50:14
  */
 /* 引入路由模块，和vue2.0方式不同 */
 import { createRouter, createWebHashHistory } from 'vue-router'

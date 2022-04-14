@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:28
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-14 01:30:38
+ * @LastEditTime: 2022-04-15 01:44:03
  */
 import { createApp } from 'vue'
 /* 完整引入组件库 */
@@ -12,18 +12,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 /* 3. 引入路由实例对象 */
 import router from './router'
-//按需引入
-// import 'element-plus/theme-chalk/base.css'
-// import { ElButton } from 'element-plus'
-// const components = [ElButton]
-// console.log('ElButton::',ElButton);
 
+import { ArrowDown } from '@element-plus/icons-vue'
 // 5. 创建并挂载根实例 //createApp(App).mount('#app') //原脚手架写法
 const app = createApp(App)
-// app.component(ElButton.name, ElButton)
-// components.forEach(component => {
-//     app.component(component.name, component)
-// })
+
+app.component(ArrowDown.name, ArrowDown)
+// app.component(Search.name, Search)
 // app.use(ElementPlus)
 app.use(router)
 app.mount('#app')
