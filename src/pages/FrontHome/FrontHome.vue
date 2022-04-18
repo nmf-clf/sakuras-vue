@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-15 01:53:34
+ * @LastEditTime: 2022-04-15 21:53:50
 -->
 <!--
  * @Author: niumengfei
@@ -148,10 +148,8 @@ export default {
         align-items: center;
         .search{
           .search-input{
-            // border: 1px solid red;
-            // .el-input__inner{
-            // }
-            ::v-deep input{
+            // ::v-deep input{
+            :deep(input){
               border-radius: 14px !important;
             }
           }
