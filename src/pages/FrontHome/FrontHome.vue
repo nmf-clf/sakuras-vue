@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-15 21:53:50
+ * @LastEditTime: 2022-04-19 22:51:18
 -->
 <!--
  * @Author: niumengfei
@@ -37,7 +37,7 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>react</el-dropdown-item>
-              <el-dropdown-item divided>vue</el-dropdown-item>
+              <el-dropdown-item divided @click="getChangeColor">vue</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -67,12 +67,15 @@
         </el-dropdown>
       </div>
     </el-header>
-    <el-main class="main" @click="getChangeColor">
+    <el-main class="main">
       <h2>Hello，sakuras!</h2>
       <h2>Goodbye Friends!</h2>
       <h1 @click="changeText">{{mainTxt}}</h1>
       <a href="https://beian.miit.gov.cn/">豫ICP备20014071号-1</a>
     </el-main>
+    <!-- <el-footer>
+      <a href="https://beian.miit.gov.cn/">豫ICP备20014071号-1</a>
+    </el-footer> -->
   </el-container>
   <!-- Copyright © 2018-2022  关于我们-->
 </template>
