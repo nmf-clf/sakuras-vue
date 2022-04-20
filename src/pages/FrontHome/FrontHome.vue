@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-19 22:51:18
+ * @LastEditTime: 2022-04-20 23:39:06
 -->
 <!--
  * @Author: niumengfei
@@ -13,8 +13,11 @@
 <template>
   <el-container class="frontHome">
     <el-header class="header">
-      <span class="lf-title">夜语清梦</span>
-      <!-- <el-icon><search /></el-icon> -->
+      <div>
+        <!-- <el-icon><expand size='20px' /></el-icon> -->
+        <span class="lf-title">夜语清梦</span>
+      </div>
+      
       <div class="rg-options">
         <div class="search">
            <el-input
@@ -141,7 +144,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     .lf-title{
-      font-size: 1.3rem;
+      font-size: 2rem;
       font-weight: 600;
       color: #2c3e50;
       align-items: center;

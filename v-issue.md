@@ -26,7 +26,7 @@
         //如果不全局注册，则报错如下：
         //Failed to resolve component: arrow-down
     ```
-    - 而某些图标组件则需要在文件里引入组件，并在setup里导出，例如一下这种用法：
+    - 而通过表达式引入的图标组件则需要在文件里引入组件，并在setup里导出，例如一下这种用法：
     ```js
         //FrontHome.vue
         /* html */
