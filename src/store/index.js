@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-19 21:29:34
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-19 22:26:37
+ * @LastEditTime: 2022-04-21 00:14:31
  */
 import { createStore } from 'vuex'
 
@@ -23,6 +23,18 @@ const store = createStore({
     SETWIDTHANDHeight(state, value){
       state.screenWidth = value[0]
       state.screenHeight = value[1]
+    }
+  },
+  getters: {
+    deviceType(state){
+      /*  (()=>{
+        let power = this.$store.state.screenWidth / 375; //以iphoneX(宽度375px)为基准
+        let bigSize = 10 * power;  //设置rem基准单位, 在iphoneX上 bigSize = 10px = 1rem
+        let realSize = bigSize > 40 ? '40px' : bigSize + 'px'; //浏览器最大字体为40px
+        document.documentElement.style.fontSize = realSize;
+      })() */
+      console.log('state::', state);
+      return state.screenWidth > 700 ? 'pc' : 'mobile'
     }
   }
 })

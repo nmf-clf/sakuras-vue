@@ -2,10 +2,10 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-20 23:17:21
+ * @LastEditTime: 2022-04-21 00:17:58
 -->
 <template>
-  <div id="app" :class="dynamicClass">
+  <div id="app" :class="'app-' + $store.getters.deviceType">
     <router-view></router-view>
   </div>
   <!-- 按需加载时-使用全局配置size和zIndex的组件包裹跟组件 -->
@@ -17,28 +17,16 @@
 </template>
 
 <script>
-import './assets/common.less';
+// import './assets/common.less';
 
 export default {
   name: 'App',
   mounted() {
-    console.log('App加载完毕...');
     document.documentElement.style.fontSize = '16px';
     window.addEventListener('resize', ()=>{ //监听视图宽度和高度的变化
       let wh = [document.documentElement.clientWidth, document.documentElement.clientHeight]
       this.$store.dispatch('setWidthAndHeight', wh)
     })
-  },
-  computed: {
-    dynamicClass(){ //动态设置app样式
-     /*  (()=>{
-        let power = this.$store.state.screenWidth / 375; //以iphoneX(宽度375px)为基准
-        let bigSize = 10 * power;  //设置rem基准单位, 在iphoneX上 bigSize = 10px = 1rem
-        let realSize = bigSize > 40 ? '40px' : bigSize + 'px'; //浏览器最大字体为40px
-        document.documentElement.style.fontSize = realSize;
-      })() */
-      return this.$store.state.screenWidth < 550 ? 'device-mobile' : 'device-pc'
-    }
   },
 }
 /* 按需加载时-全局配置size和zIndex */
@@ -56,3 +44,17 @@ export default defineComponent({
   },
 }) */
 </script>
+<style lang='less'>
+*{
+    margin: 0;
+    padding: 0;
+}
+#app{
+  .app-pc{ //app样式
+    // color: rgb(5, 5, 5);
+  }
+  .app-mobile{ //PC样式
+    // color: rgb(245, 118, 14);
+  }
+}
+</style>

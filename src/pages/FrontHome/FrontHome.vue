@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-20 23:39:06
+ * @LastEditTime: 2022-04-21 00:24:59
 -->
 <!--
  * @Author: niumengfei
@@ -11,10 +11,10 @@
  * @LastEditTime: 2022-04-06 23:43:19
 -->
 <template>
-  <el-container class="frontHome">
+  <el-container :class="'frontHome' + (' frontHome-' + $store.getters.deviceType)">
     <el-header class="header">
-      <div>
-        <!-- <el-icon><expand size='20px' /></el-icon> -->
+      <div class="lf-box">
+        <el-icon class='lf-select' :size="25"><expand/></el-icon>
         <span class="lf-title">夜语清梦</span>
       </div>
       
@@ -29,11 +29,11 @@
           />
         </div>
         <!-- 首页 -->
-        <el-dropdown>
+        <el-dropdown class="hidden-dropdown">
           <span class="el-dropdown-link">首页</span>
         </el-dropdown>
         <!-- 前端笔记 -->
-        <el-dropdown>
+        <el-dropdown class="hidden-dropdown">
           <span class="el-dropdown-link">前端笔记
             <el-icon class="el-icon--right"><arrow-down /></el-icon>
           </span>
@@ -45,7 +45,7 @@
           </template>
         </el-dropdown>
         <!-- 后端笔记 -->
-        <el-dropdown>
+        <el-dropdown class="hidden-dropdown">
           <span class="el-dropdown-link">后端笔记
             <el-icon class="el-icon--right"><arrow-down /></el-icon>
           </span>
@@ -57,7 +57,7 @@
           </template>
         </el-dropdown>
         <!-- 个人中心 -->
-        <el-dropdown>
+        <el-dropdown class="hidden-dropdown">
           <span class="el-dropdown-link">个人中心
             <el-icon class="el-icon--right"><arrow-down /></el-icon>
           </span>
@@ -143,11 +143,17 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .lf-title{
-      font-size: 2rem;
-      font-weight: 600;
-      color: #2c3e50;
+    .lf-box{
+      display: flex;
       align-items: center;
+      .lf-title{
+        // font-size: 1.5rem;
+        font-size: 25px;
+        font-weight: 600;
+        color: #2c3e50;
+        align-items: center;
+        margin-left: 10px;
+      }
     }
     .rg-options{
         display: flex;
@@ -189,6 +195,16 @@ export default {
     h1{
       cursor: pointer;
     }
+  }
+}
+.frontHome-pc{
+  .lf-select{
+    display: none;
+  }
+}
+.frontHome-mobile{
+  .hidden-dropdown{
+    display: none;
   }
 }
 </style>

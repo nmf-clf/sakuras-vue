@@ -5,7 +5,7 @@
  * @LastEditTime: 2022-04-16 00:25:22
 -->
 <template>
-  <div v-html="README_MD" class="markdown-body"></div>
+  <div v-html="README_MD" class="markdown markdown-body"></div>
 </template>
 
 <script>
