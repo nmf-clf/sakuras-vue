@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-21 00:24:59
+ * @LastEditTime: 2022-04-24 18:58:35
 -->
 <!--
  * @Author: niumengfei
@@ -14,7 +14,7 @@
   <el-container :class="'frontHome' + (' frontHome-' + $store.getters.deviceType)">
     <el-header class="header">
       <div class="lf-box">
-        <el-icon class='lf-select' :size="25"><expand/></el-icon>
+        <el-icon class='lf-select' :size="25" ><Expand /></el-icon>
         <span class="lf-title">夜语清梦</span>
       </div>
       
@@ -40,7 +40,7 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>react</el-dropdown-item>
-              <el-dropdown-item divided @click="getChangeColor">vue</el-dropdown-item>
+              <el-dropdown-item divided @click="turnToDetail">vue</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -80,17 +80,22 @@
       <a href="https://beian.miit.gov.cn/">豫ICP备20014071号-1</a>
     </el-footer> -->
   </el-container>
+  <MySideBar 
+    :isOpen="isOpen"
+  />
   <!-- Copyright © 2018-2022  关于我们-->
 </template>
 
 <script >
-import { ref, reactive, getCurrentInstance } from 'vue'
+import { ref, reactive, getCurrentInstance, defineAsyncComponent } from 'vue'
 import { useRouter } from 'vue-router'
-import { Search } from '@element-plus/icons-vue'
+import { Search, Expand } from '@element-plus/icons-vue'
+import MySideBar from '../../components/SideBar/SideBar.vue'
 
 export default {
   name: 'FrontHome',
   props: ['msg'],
+  components: { MySideBar, Expand },
   setup(props, context) {
     console.log('HelloWord-setup::',props);
     const router = useRouter();
@@ -104,31 +109,26 @@ export default {
     let mainTxt = ref(txtList[Math.floor( (Math.random() * txtList.length) )])
     const activeIndex = ref('1')
     const input2 = ref('')
-    const handleSelect = (key, keyPath) => {
-      console.log(key, keyPath)
-    }
+    const isOpen = ref(false)
     /* 定义方法 */
-    let getChangeColor = () =>{
+    let turnToDetail = () =>{
       // console.log(context, this);
       context.emit('changeColor', '666')
       // const { ctx } = getCurrentInstance();
       console.log(router);
-      router.push({
-        path: '/test'
-      })
+      router.push({ path: '/test' })
     }
-    let changeText = () =>{
-      mainTxt.value = txtList[Math.floor( (Math.random() * txtList.length) )]
-    }
+    let changeText = () => mainTxt.value = txtList[Math.floor( (Math.random() * txtList.length) )] 
+
     return {
       name: '123',
       mainTxt,
-      getChangeColor,
+      turnToDetail,
       changeText,
       activeIndex,
-      handleSelect,
       input2,
       Search,
+      isOpen,
     }
   },
 }
@@ -143,6 +143,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 60px;
     .lf-box{
       display: flex;
       align-items: center;
@@ -153,6 +154,7 @@ export default {
         color: #2c3e50;
         align-items: center;
         margin-left: 10px;
+        min-width: 100px;
       }
     }
     .rg-options{
@@ -199,7 +201,8 @@ export default {
 }
 .frontHome-pc{
   .lf-select{
-    display: none;
+    // display: none;
+    cursor: pointer;
   }
 }
 .frontHome-mobile{

@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-21 00:17:58
+ * @LastEditTime: 2022-04-24 18:28:26
 -->
 <template>
   <div id="app" :class="'app-' + $store.getters.deviceType">
@@ -18,7 +18,6 @@
 
 <script>
 // import './assets/common.less';
-
 export default {
   name: 'App',
   mounted() {
@@ -50,11 +49,9 @@ export default defineComponent({
     padding: 0;
 }
 #app{
-  .app-pc{ //app样式
-    // color: rgb(5, 5, 5);
+  .app-pc{
   }
-  .app-mobile{ //PC样式
-    // color: rgb(245, 118, 14);
+  .app-mobile{
   }
 }
 </style>

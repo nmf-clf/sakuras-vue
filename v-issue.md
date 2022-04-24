@@ -1,5 +1,5 @@
 ### 过程
-+ 1、vue-create appName 脚手架创建工程、删除无用文件
++ 1、vue-create appName 脚手架创建工程、删除无用文件(2022/04/?)
 + 2、创建及配置部分文件夹：
     - 创建src/router文件夹，同时配置路由及路由规则，
     - 创建src/pages文件夹，用于存放前端路由页面
@@ -13,18 +13,24 @@
 + 9、考虑到未来某个模块可能有多个路由页面，以及某个公共组件可能由多个子组件组成：
     - 因此将pages和components目录下的.vue文件放在以模块/组件命名的文件夹内，即`pages/Home.vue → pages/Home/Home.vue`
 + 安装并配置vuex：因为要做响应式布局，需要存储和监听页面的变化以及基准比例，采用getters监听store里state数据变化
++ 10、通过查找组件内引入组件BUG的原因，清楚了组件应该如何引用，即全局方法或者局部引入方法(2022/04/24)
 
 ### 遇到的问题
 + 1、配置router时，发现vue3跟vue2的使用方法不一样，见官网描述，比如引入，创建，通过路由跳转, vue2配置router(3)vuex(3) vue3配置router(4)vuex(4)
 + 2、配置按需加载ant-plus组件库时，采用的是官方的方式，在vue.config.js里配置configureWebpack.plugins: []
 + 3、配置图标组件库时发现，图标组件库官方尚未完成按需加载和CDN引入，因此需要在全局注册：
-    - 某些图标组件可以全局注册来使用，例如ArrowDown: 
+    - 某些图标组件可以1全局注册来使用，也可以采用2组件内去引入: 例如ArrowDown: 
     ```js
-        //main.js
+        //第一种方案 main.js
         import { ArrowDown } from '@element-plus/icons-vue';
         app.component(ArrowDown.name, ArrowDown)
         //如果不全局注册，则报错如下：
-        //Failed to resolve component: arrow-down
+        //Failed to resolve component: arrow-down. If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement.
+        //第二种方案 FrontHome.vue
+        import { Search, Expand } from '@element-plus/icons-vue'
+        export default {
+            components: { MySideBar, Expand },
+        }
     ```
     - 而通过表达式引入的图标组件则需要在文件里引入组件，并在setup里导出，例如一下这种用法：
     ```js
