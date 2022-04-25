@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-24 18:58:35
+ * @LastEditTime: 2022-04-25 23:46:41
 -->
 <!--
  * @Author: niumengfei
@@ -14,7 +14,7 @@
   <el-container :class="'frontHome' + (' frontHome-' + $store.getters.deviceType)">
     <el-header class="header">
       <div class="lf-box">
-        <el-icon class='lf-select' :size="25" ><Expand /></el-icon>
+        <el-icon class='lf-select' :size="25" @click="openLeftSideBar"><Expand /></el-icon>
         <span class="lf-title">夜语清梦</span>
       </div>
       
@@ -119,7 +119,9 @@ export default {
       router.push({ path: '/test' })
     }
     let changeText = () => mainTxt.value = txtList[Math.floor( (Math.random() * txtList.length) )] 
-
+    let openLeftSideBar = () =>{
+      isOpen.value = !isOpen.value;
+    }
     return {
       name: '123',
       mainTxt,
@@ -129,6 +131,7 @@ export default {
       input2,
       Search,
       isOpen,
+      openLeftSideBar,
     }
   },
 }
@@ -147,6 +150,9 @@ export default {
     .lf-box{
       display: flex;
       align-items: center;
+      .lf-select{
+        cursor: pointer;
+      }
       .lf-title{
         // font-size: 1.5rem;
         font-size: 25px;
@@ -201,8 +207,7 @@ export default {
 }
 .frontHome-pc{
   .lf-select{
-    // display: none;
-    cursor: pointer;
+    display: none;
   }
 }
 .frontHome-mobile{
