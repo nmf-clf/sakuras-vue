@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
+    "animate.css": "^4.1.1",
     "core-js": "^3.8.3",
     "element-plus": "^2.1.9",
     "github-markdown-css": "^5.1.0",

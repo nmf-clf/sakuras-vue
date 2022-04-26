@@ -14,6 +14,7 @@
     - 因此将pages和components目录下的.vue文件放在以模块/组件命名的文件夹内，即`pages/Home.vue → pages/Home/Home.vue`
 + 安装并配置vuex：因为要做响应式布局，需要存储和监听页面的变化以及基准比例，采用getters监听store里state数据变化
 + 10、通过查找组件内引入组件BUG的原因，清楚了组件应该如何引用，即全局方法或者局部引入方法(2022/04/24)
++ 11、引入动画库animate.css，用于封装侧边栏等具有动画的常用组件(2022/04/26)
 
 ### 遇到的问题
 + 1、配置router时，发现vue3跟vue2的使用方法不一样，见官网描述，比如引入，创建，通过路由跳转, vue2配置router(3)vuex(3) vue3配置router(4)vuex(4)

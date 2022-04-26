@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-24 16:50:58
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-25 23:49:44
+ * @LastEditTime: 2022-04-26 23:40:12
 -->
 <!--
  * @Author: niumengfei
@@ -11,36 +11,41 @@
  * @LastEditTime: 2022-04-12 15:58:58
 -->
 <template>
-  <div :class="isActive ? 'sideBar sideBar-active' : ''">
-    <!-- <button @click="isShow = !isShow">显示/隐藏</button>
-    <transition-group name="sideBar" appear class="sideBar">
-			<h1 v-show="!isShow" key="1">你好啊！</h1>
-			<h1 v-show="isShow" key="2">尚硅谷！</h1>
-		</transition-group> -->
+  <div :class="'sideBar ' + activeClass">
+    1233
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
-
+import { ref, computed, watch } from 'vue'
+import { useStore } from 'vuex'
 export default {
     name: 'sideBar',
     props: ['isOpen'],
     setup(props, context) {
-      console.log('子组件::', props, context, props.isOpen);
-      let isActive = ref(props.isOpen);
+      const store = useStore();
+      console.log('子组件::', props, context, props.isOpen, store.getters.deviceType);
+      // let isActive = ref(props.isOpen)
+      /* 定义属性 */
+      let isInit = ref(false) //初始化为false，如果侧边栏点击过则置为true
+      /* 计算属性 */
+      let activeClass = computed(()=>{ //计算属性回调不接受值
+        if(store.getters.deviceType == 'mobile'){
+          if(props.isOpen) isInit.value = true //若点击过/父组件传递为true 则置为true
+          if(isInit.value){ //如果点击过/默认为true 则自动展开侧边栏
+            return props.isOpen ? 'animate__animated animate__slideInLeft' : 'animate__animated animate__slideOutLeft'
+          }
+          return ''
+        }
+        return ''
+      })
+      /* 返回对象 */
       return {
-        // isActive
+        activeClass
 			}
     },
-    computed:{
-      isActive(e,e2){
-        console.log('xx',e,e2,this.isOpen);
-        return this.isOpen && this.$store.getters.deviceType == 'mobile';
-      }
-    },
-    updated() {
-      console.log('更新了...',this.isOpen);
+    updated(a,b) {
+      console.log('更新了...',a,b,this.initNum);
     },
 }
 </script>
@@ -52,12 +57,15 @@ export default {
     z-index: 9999;
     top: 60px;
     bottom: 0px;
-    border-right: 1px solid red;
-    background: yellow;
+    border-right: 1px solid #e6dfdf;;
+    background: #fff;
+    transform: translateX(-100%);
   }
-  .sideBar-active{
-    animation: sport 0.5s ease;
-     	@keyframes sport{
+
+/*   .sideBar-active{
+    width: 16.4rem;
+    animation: leftToRightForLinear 0.5s ease;
+     	@keyframes leftToRightForLinear{
 		  from{ 
         transform: translateX(-100%);
       }
@@ -66,6 +74,21 @@ export default {
       }
 		}
   }
+  .sideBar-move{
+    // width: 16.4rem;
+    animation: rightToLeftForLinear 0.5s ease;
+       @keyframes rightToLeftForLinear {    
+        from{ 
+          transform: translateX(0px);
+          width: 16.4rem;
+        }
+        to{ 
+          transform: translateX(-100%);
+          width: 0rem;
+        }
+      }
+  }
+ */
 	// /* 进入的起点、离开的终点 */
 	// .sideBar-enter,.sideBar-leave-to{
 	// 	transform: translateX(-100%);

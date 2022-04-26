@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-25 23:46:41
+ * @LastEditTime: 2022-04-26 23:10:39
 -->
 <!--
  * @Author: niumengfei
@@ -70,15 +70,15 @@
         </el-dropdown>
       </div>
     </el-header>
-    <el-main class="main">
+    <el-main class="main animate__animated animate__bounce">
       <h2>Hello，sakuras!</h2>
       <h2>Goodbye Friends!</h2>
       <h1 @click="changeText">{{mainTxt}}</h1>
-      <a href="https://beian.miit.gov.cn/">豫ICP备20014071号-1</a>
+      <!-- <a href="https://beian.miit.gov.cn/">豫ICP备20014071号-1</a> -->
     </el-main>
-    <!-- <el-footer>
+    <el-footer class="footer">
       <a href="https://beian.miit.gov.cn/">豫ICP备20014071号-1</a>
-    </el-footer> -->
+    </el-footer>
   </el-container>
   <MySideBar 
     :isOpen="isOpen"
@@ -120,6 +120,7 @@ export default {
     }
     let changeText = () => mainTxt.value = txtList[Math.floor( (Math.random() * txtList.length) )] 
     let openLeftSideBar = () =>{
+      // isOpen.value = isOpen.value == '1' ? '0' : '1';
       isOpen.value = !isOpen.value;
     }
     return {
@@ -202,6 +203,17 @@ export default {
     }
     h1{
       cursor: pointer;
+    }
+  }
+  .footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    a{
+      color: #505050;
+      text-decoration: none;
     }
   }
 }
