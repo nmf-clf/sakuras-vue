@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-24 18:28:26
+ * @LastEditTime: 2022-04-27 17:02:51
 -->
 <template>
   <div id="app" :class="'app-' + $store.getters.deviceType">
@@ -22,11 +22,12 @@ export default {
   name: 'App',
   mounted() {
     document.documentElement.style.fontSize = '16px';
-    window.addEventListener('resize', ()=>{ //监听视图宽度和高度的变化
+    /* 监听视图宽度和高度的变化 */
+    window.addEventListener('resize', ()=>{
       let wh = [document.documentElement.clientWidth, document.documentElement.clientHeight]
       this.$store.dispatch('setWidthAndHeight', wh)
     })
-  },
+  }
 }
 /* 按需加载时-全局配置size和zIndex */
 /* import { defineComponent } from 'vue'
@@ -45,13 +46,7 @@ export default defineComponent({
 </script>
 <style lang='less'>
 *{
-    margin: 0;
-    padding: 0;
-}
-#app{
-  .app-pc{
-  }
-  .app-mobile{
-  }
+  margin: 0;
+  padding: 0;
 }
 </style>
