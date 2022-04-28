@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-04 23:17:24
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-15 22:13:45
+ * @LastEditTime: 2022-04-28 23:33:32
  */
 /* 引入路由模块，和vue2.0方式不同 */
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -11,7 +11,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // import FrontHome from '../pages/FrontHome/FrontHome.vue'
 import FrontHome from '@/pages/FrontHome/FrontHome.vue'
 import Test from '@/pages/MarkDown/Test.vue'
-// import Login from '@/pages/Login.vue'
+import Login from '@/pages/Login/Login.vue'
 
 // 2. 定义一些路由：每个路由都需要映射到一个组件。 我们后面再讨论嵌套路由。
 const routes = [
@@ -21,7 +21,7 @@ const routes = [
     },
     {
         path: '/login',
-        // component: Login    
+        component: Login    
     },
     {
         path: '/test',
