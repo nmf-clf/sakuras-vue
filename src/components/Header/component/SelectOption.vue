@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-27 17:25:41
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-28 23:34:51
+ * @LastEditTime: 2022-04-29 14:16:52
 -->
 <template>
   <div :class="'rg-options' + (' rg-options-' + $store.getters.deviceType)">
@@ -42,7 +42,7 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item>nodeJS</el-dropdown-item>
-          <el-dropdown-item divided>???</el-dropdown-item>
+          <el-dropdown-item divided>nginx</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -65,7 +65,7 @@
 import { ref, reactive, getCurrentInstance, defineAsyncComponent } from 'vue'
 import { useRouter } from 'vue-router'
 import { Search, Expand } from '@element-plus/icons-vue'
-import MySideBar from '../../SideBar/SideBar.vue'
+import MySideBar from '../../SideBar'
 
 export default {
   name: 'MyHeader',

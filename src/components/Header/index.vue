@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-12 15:56:02
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-27 19:26:11
+ * @LastEditTime: 2022-04-29 14:17:16
 -->
 <template>
   <el-header :class="'myHeader' + (' myHeader-' + $store.getters.deviceType)">
@@ -20,7 +20,7 @@
 <script>
 import { ref } from 'vue'
 import { Expand } from '@element-plus/icons-vue'
-import MySideBar from '../SideBar/SideBar.vue'
+import MySideBar from '../SideBar'
 import SelectOption from './component/SelectOption'
 
 export default {

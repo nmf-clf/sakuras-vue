@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-28 23:30:58
+ * @LastEditTime: 2022-04-29 15:50:12
 -->
 <!--
  * @Author: niumengfei
@@ -11,8 +11,8 @@
  * @LastEditTime: 2022-04-06 23:43:19
 -->
 <template>
-  
-  <el-container :class="'frontHome' + (' frontHome-' + $store.getters.deviceType)">
+  <!-- <el-container :class="'frontHome-' + $store.getters.deviceType" class="frontHome"> -->
+  <el-container :class="'frontHome-' + deviceType" class="frontHome">
     <MyHeader />
     <el-main class="main animate__animated animate__bounce">
       <h2>Hello，sakuras!</h2>
@@ -53,6 +53,17 @@ export default {
       changeText,
     }
   },
+  computed: {
+    deviceType(){
+      return this.$store.getters.deviceType
+    },
+    classObj(){
+      return {
+        'frontHome-pc': this.$store.getters.deviceType == 'pc',
+        'frontHome-mobile': this.$store.getters.deviceType == 'mobile'
+      }
+    }
+  }
 }
 </script>
 
