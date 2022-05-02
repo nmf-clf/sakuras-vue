@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-19 21:29:34
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-21 00:14:31
+ * @LastEditTime: 2022-05-02 23:51:10
  */
 import { createStore } from 'vuex'
 
@@ -12,17 +12,25 @@ const store = createStore({
     return {
       screenWidth: document.documentElement.clientWidth,
       screenHeight: document.documentElement.clientHeight,
+      userInfo: {
+      }, //用户信息
     }
   },
   actions: {
     setWidthAndHeight({ commit }, value){
-      commit('SETWIDTHANDHeight', value)
+      commit('SET_WIDTH_AND_Height', value)
+    },
+    saveUserInfo({ commit }, value){
+      commit('SAVE_USER_INFO', value)
     }
   },
   mutations: {
-    SETWIDTHANDHeight(state, value){
+    SET_WIDTH_AND_Height(state, value){
       state.screenWidth = value[0]
       state.screenHeight = value[1]
+    },
+    SAVE_USER_INFO(state, value){
+      state.userInfo = value
     }
   },
   getters: {

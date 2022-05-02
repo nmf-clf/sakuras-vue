@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-27 17:25:41
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-29 14:16:52
+ * @LastEditTime: 2022-05-02 23:52:54
 -->
 <template>
   <div :class="'rg-options' + (' rg-options-' + $store.getters.deviceType)">
@@ -12,7 +12,7 @@
       <el-input
         v-show="showSearch && $store.getters.deviceType == 'pc'"
         class='search-input'
-        v-model="input2"
+        v-model="searchVal"
         placeholder="请输入关键字"
         :clearable='true'
         :prefix-icon="Search"
@@ -53,7 +53,7 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item @click="turnPage('/login')">登录/注销</el-dropdown-item>
+          <el-dropdown-item @click="loginOrOut('/login')">{{userInfo.username ? '注销' : '登录'}}</el-dropdown-item>
           <el-dropdown-item divided>后台管理</el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -62,8 +62,9 @@
 </template>
 
 <script>
-import { ref, reactive, getCurrentInstance, defineAsyncComponent } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from "vuex";
 import { Search, Expand } from '@element-plus/icons-vue'
 import MySideBar from '../../SideBar'
 
@@ -79,8 +80,10 @@ export default {
   setup(props, context) {
     console.log('HelloWord-setup::',props);
     const router = useRouter();
+    const store = useStore();
+    const { userInfo } = store.state;
     /* 定义数据 */
-    const input2 = ref('')
+    const searchVal = ref('')
     /* 定义方法 */
     let turnPage = (e) =>{
       // console.log(context, this);
@@ -89,16 +92,28 @@ export default {
       console.log(router);
       router.push({ path: e })
     }
-    let sty = () =>{
-      console.log('阻止默认行为');
+    let loginOrOut = (e) =>{
+      console.log(userInfo);
+      if(userInfo.username){
+        //退出登录
+        alert('退出登录')
+        store.dispatch('saveUserInfo', {})
+      }else{
+        turnPage(e)
+      }
     }
     return {
       turnPage,
-      input2,
+      searchVal,
       Search,
-      sty
+      loginOrOut,
     }
   },
+  computed: {
+    userInfo(){
+      return this.$store.state.userInfo
+    }
+  }
 }
 </script>
 

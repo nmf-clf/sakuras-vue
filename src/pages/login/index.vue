@@ -2,15 +2,15 @@
  * @Author: niumengfei
  * @Date: 2022-04-28 23:04:30
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-30 19:39:35
+ * @LastEditTime: 2022-05-02 23:42:19
 -->
 <template>
-  <div class='login'>
+  <div :class="'login-' + $store.getters.deviceType" class="login">
     <el-form :model="form" class="login-form">
       <el-form-item label="账号" class="username">
         <el-input v-model="form.username" />
       </el-form-item>
-       <el-form-item label="密码">
+       <el-form-item label="密码" class="password">
         <el-input v-model="form.password" />
       </el-form-item>
       <el-form-item>
@@ -23,16 +23,28 @@
 
 <script>
 import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from "vuex";
 
 export default {
   name: 'Login',
   setup(props) {
+    const router = useRouter();
+    const store = useStore();
+
     const form = reactive({
-      username: '',
+      username: 'admin',
       password: '',
     })
+
     const onSubmit = () => {
-      alert('哈哈，还没开发呢，大笨蛋！大傻瓜！')
+      if(form.username == 'admin' && form.password == '123456'){
+        //假设接口调用完毕 1：存储用户信息 2：跳转到首页
+        store.dispatch('saveUserInfo', { //暂时这样存 需要整体加密
+          username: form.username,
+        })
+        router.push({ path: '/' })
+      }
     }
     return {
       form,
@@ -48,6 +60,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url(../../assets/images/login.jpg);
   .login-form{
     border: 1px solid #d3d3d3;
     border-radius: 10px;
@@ -56,6 +69,9 @@ export default {
     .username{
       margin-top: 30px;
     }
+    .el-form-item__label{
+      color: #fff;
+    }
     .el-form-item{
       padding: 20px 0px;
       .el-form-item__content{
@@ -63,5 +79,9 @@ export default {
       }
     }
   }
+}
+.login-pc{
+  justify-content: flex-end;
+  padding-right: 15%;
 }
 </style>
