@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-27 17:25:41
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-02 23:52:54
+ * @LastEditTime: 2022-05-04 23:45:46
 -->
 <template>
   <div :class="'rg-options' + (' rg-options-' + $store.getters.deviceType)">
@@ -47,13 +47,14 @@
       </template>
     </el-dropdown>
     <!-- 个人中心 -->
-    <el-dropdown class="hidden-dropdown">
+    <el-dropdown class="hidden-dropdown" trigger="click">
       <span class="el-dropdown-link">个人中心
         <el-icon class="el-icon--right"><arrow-down /></el-icon>
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item @click="loginOrOut('/login')">{{userInfo.username ? '注销' : '登录'}}</el-dropdown-item>
+          <el-dropdown-item v-if="userInfo.username"><el-icon><user /></el-icon>{{userInfo.username}}</el-dropdown-item>
+          <el-dropdown-item :divided="userInfo.username == true" @click="loginOrOut('/login')">{{userInfo.username ? '注销' : '登录'}}</el-dropdown-item>
           <el-dropdown-item divided>后台管理</el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -62,15 +63,15 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from "vuex";
-import { Search, Expand } from '@element-plus/icons-vue'
+import { Search } from '@element-plus/icons-vue'
 import MySideBar from '../../SideBar'
 
 export default {
   name: 'MyHeader',
-  components: { Expand, MySideBar, Search },
+  components: { MySideBar, Search },
   props:{
     showSearch:{
       type: Boolean,
@@ -78,10 +79,8 @@ export default {
     },
 	},
   setup(props, context) {
-    console.log('HelloWord-setup::',props);
     const router = useRouter();
     const store = useStore();
-    const { userInfo } = store.state;
     /* 定义数据 */
     const searchVal = ref('')
     /* 定义方法 */
@@ -89,15 +88,17 @@ export default {
       // console.log(context, this);
       context.emit('changeColor', '666')
       // const { ctx } = getCurrentInstance();
-      console.log(router);
       router.push({ path: e })
     }
     let loginOrOut = (e) =>{
-      console.log(userInfo);
-      if(userInfo.username){
-        //退出登录
-        alert('退出登录')
+      const { userInfo } = store.state;
+      if(userInfo.username){ //退出登录
         store.dispatch('saveUserInfo', {})
+        ElMessage({
+          message: '注销成功',
+          type: 'success',
+          center: true,
+        })
       }else{
         turnPage(e)
       }
@@ -117,7 +118,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scope>
 .rg-options{
   display: flex;
   .search{
@@ -136,6 +137,10 @@ export default {
     text-align: center;
     // color: var(--el-color-primary);
   }
+ 
+}
+.el-dropdown-menu__item{
+  justify-content: center !important;
 }
 .rg-options-pc{
   align-items: center;

@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-28 23:04:30
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-02 23:42:19
+ * @LastEditTime: 2022-05-04 23:22:05
 -->
 <template>
   <div :class="'login-' + $store.getters.deviceType" class="login">
@@ -23,8 +23,8 @@
 
 <script>
 import { reactive } from 'vue'
-import { useRouter } from 'vue-router'
 import { useStore } from "vuex";
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'Login',
@@ -44,6 +44,11 @@ export default {
           username: form.username,
         })
         router.push({ path: '/' })
+        ElMessage({
+          message: '登录成功',
+          type: 'success',
+          center: true,
+        })
       }
     }
     return {

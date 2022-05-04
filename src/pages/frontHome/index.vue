@@ -2,13 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-29 15:50:12
--->
-<!--
- * @Author: niumengfei
- * @Date: 2022-04-01 18:25:28
- * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-06 23:43:19
+ * @LastEditTime: 2022-05-04 23:24:14
 -->
 <template>
   <!-- <el-container :class="'frontHome-' + $store.getters.deviceType" class="frontHome"> -->

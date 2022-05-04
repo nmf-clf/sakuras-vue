@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-12 15:56:02
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-29 14:17:16
+ * @LastEditTime: 2022-05-04 22:56:24
 -->
 <template>
   <el-header :class="'myHeader' + (' myHeader-' + $store.getters.deviceType)">
@@ -27,7 +27,6 @@ export default {
   name: 'MyHeader',
   components: { Expand, MySideBar, SelectOption },
   setup(props, context) {
-    console.log('HelloWord-setup::',props);
     /* 定义数据 */
     const isOpen = ref(false)
     /* 定义方法 */

@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-19 21:29:34
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-02 23:51:10
+ * @LastEditTime: 2022-05-04 22:55:24
  */
 import { createStore } from 'vuex'
 
@@ -41,7 +41,6 @@ const store = createStore({
         let realSize = bigSize > 40 ? '40px' : bigSize + 'px'; //浏览器最大字体为40px
         document.documentElement.style.fontSize = realSize;
       })() */
-      console.log('state::', state);
       return state.screenWidth > 700 ? 'pc' : 'mobile'
     }
   }
