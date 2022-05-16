@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-04 23:17:24
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-12 23:40:17
+ * @LastEditTime: 2022-05-12 23:54:45
  */
 /* 引入路由模块，和vue2.0方式不同 */
 import { createRouter, createWebHashHistory } from 'vue-router'//导入
@@ -15,8 +15,8 @@ import Test from '@/pages/markDown'
 import Login from '@/pages/login'
 
 // 简单配置  进度条,可以不配置：在axios中我们不再做配置，以用来区分。
-NProgress.inc(0.2)
-NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
+// NProgress.inc(0.2)
+// NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 
 // 2. 定义一些路由：每个路由都需要映射到一个组件。 我们后面再讨论嵌套路由。
 const routes = [
@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from, next) => {
     // console.log(to, from, s);
     NProgress.done()
-    // document.title = 'sakuras'
+    document.title = 'sakuras'
 })
 
 export default router

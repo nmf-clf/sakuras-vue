@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-27 17:25:41
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-04 23:45:46
+ * @LastEditTime: 2022-05-16 21:36:52
 -->
 <template>
   <div :class="'rg-options' + (' rg-options-' + $store.getters.deviceType)">
@@ -46,8 +46,8 @@
         </el-dropdown-menu>
       </template>
     </el-dropdown>
-    <!-- 个人中心 -->
-    <el-dropdown class="hidden-dropdown" trigger="click">
+    <!-- 个人中心 trigger="click"-->
+    <el-dropdown class="hidden-dropdown">
       <span class="el-dropdown-link">个人中心
         <el-icon class="el-icon--right"><arrow-down /></el-icon>
       </span>

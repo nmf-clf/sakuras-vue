@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-27 17:02:51
+ * @LastEditTime: 2022-05-12 23:55:48
 -->
 <template>
   <div id="app" :class="'app-' + $store.getters.deviceType">
@@ -48,5 +48,12 @@ export default defineComponent({
 *{
   margin: 0;
   padding: 0;
+}
+#nprogress .spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: 50% !important;
+    right: 50% !important;
 }
 </style>
