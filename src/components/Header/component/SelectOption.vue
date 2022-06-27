@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-27 17:25:41
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-16 21:36:52
+ * @LastEditTime: 2022-06-21 17:15:32
 -->
 <template>
   <div :class="'rg-options' + (' rg-options-' + $store.getters.deviceType)">
@@ -30,7 +30,8 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item>react</el-dropdown-item>
-          <el-dropdown-item divided @click="turnPage('/test')">vue</el-dropdown-item>
+          <el-dropdown-item divided @click="turnPage('/markdown', 'vue')">vue</el-dropdown-item>
+          <el-dropdown-item divided @click="turnPage('Markdown', 'webpack')">webpack</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -84,11 +85,18 @@ export default {
     /* 定义数据 */
     const searchVal = ref('')
     /* 定义方法 */
-    let turnPage = (e) =>{
+    let turnPage = (path, pdfUrl) =>{
       // console.log(context, this);
       context.emit('changeColor', '666')
-      // const { ctx } = getCurrentInstance();
-      router.push({ path: e })
+      // const { ctx } = getCurrentInstance()
+      let datas = { 
+        path,
+        name: path.charAt(0) == '/' ? '' : path,  //(使用params传参时，必须使用name属性进行路由跳转，不能使用path配置项跳转)
+        params: {
+         pdfUrl
+        }
+      }
+      router.push(datas)
     }
     let loginOrOut = (e) =>{
       const { userInfo } = store.state;

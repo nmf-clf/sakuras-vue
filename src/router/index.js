@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-04 23:17:24
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-12 23:54:45
+ * @LastEditTime: 2022-06-27 20:53:44
  */
 /* 引入路由模块，和vue2.0方式不同 */
 import { createRouter, createWebHashHistory } from 'vue-router'//导入
@@ -11,7 +11,7 @@ import 'nprogress/nprogress.css'
 // console.log(createRouter);
 // 1. 定义路由组件 (也可以从其他文件导入)
 import FrontHome from '@/pages/frontHome'
-import Test from '@/pages/markDown'
+import markDown from '@/pages/markDown'
 import Login from '@/pages/login'
 
 // 简单配置  进度条,可以不配置：在axios中我们不再做配置，以用来区分。
@@ -37,8 +37,9 @@ const routes = [
         component: Login    
     },
     {
-        path: '/test',
-        component: Test    
+        path: '/markdown',
+        name:'Markdown',
+        component: markDown    
     }
 ]
 // 3. 创建路由实例并传递 `routes` 配置

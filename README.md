@@ -25,7 +25,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### dependencies说明
 + core-js：脚手架自带，是我们能够使用新的API的最重要包
-+ less-loader：支持使用less编写样式
++ less-loader：把less文件编译成css文件
 + vue：@3版本，vue核心功能库
 + vue-router：@4版本，vue路由核心库
 + github-markdown-css：md文件的样式

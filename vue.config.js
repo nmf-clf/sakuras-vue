@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-04-15 00:43:04
+ * @LastEditTime: 2022-06-27 17:08:20
  */
 const { defineConfig } = require('@vue/cli-service')
 /* 配置按需加载 */
@@ -13,6 +13,7 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 const path = require('path')
 
 module.exports = defineConfig({
+  publicPath: './', //影响资源加载的公共路径 配置./可以打包后本地访问
   transpileDependencies: true, //转译包管理文件,可传数组
   lintOnSave: false,  //关闭语法检查 防止1.组件名必须驼峰式 2.vue3中data和setup不能共用属性
   // productionSourceMap: true, //生产环境是否生成 sourceMap 文件
@@ -44,4 +45,19 @@ module.exports = defineConfig({
       .loader('markdown-loader')
       .end()
   },
+  devServer:{
+    // open: true, //自动打开浏览器
+    host: 'localhost', //主机名
+    port: '9000', //端口号
+    // autoOpenBrowser: true, 
+    proxy:{
+      '/api':{
+        target:'https://www.bilibili.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ""
+        }
+      }
+    }
+  }
 })
