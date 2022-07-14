@@ -2,12 +2,12 @@
  * @Author: niumengfei
  * @Date: 2022-04-27 17:25:41
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-06-21 17:15:32
+ * @LastEditTime: 2022-07-03 23:42:52
 -->
 <template>
   <div :class="'rg-options' + (' rg-options-' + $store.getters.deviceType)">
-    <div class="search">
-      <!-- 由于mobile里不需要侧边栏展示搜索框，因此不仅需要判断deviceType还需要知道是不是侧边栏加载的子组件 -->
+    <!-- 由于mobile里不需要侧边栏展示搜索框，因此不仅需要判断deviceType还需要知道是不是侧边栏加载的子组件 -->
+    <!-- <div class="search">
       <el-icon v-show="showSearch && $store.getters.deviceType == 'mobile'" class="el-icon--right" color="#A8ABB2" :size="20"><Search /></el-icon>
       <el-input
         v-show="showSearch && $store.getters.deviceType == 'pc'"
@@ -17,13 +17,29 @@
         :clearable='true'
         :prefix-icon="Search"
       />
-    </div>
+    </div> -->
     <!-- 首页 -->
     <div class="hidden-dropdown">
       <span class="el-dropdown-link" @click="turnPage('/')">首页</span>
     </div>
-    <!-- 前端笔记 -->
+    <!-- 学习笔记 -->
     <el-dropdown class="hidden-dropdown">
+      <span class="el-dropdown-link" @click="openPage('https://sakuras.group/sakuras-docs/')">学习笔记</span>
+    </el-dropdown>
+    <!-- 面试 -->
+    <el-dropdown class="hidden-dropdown">
+      <span class="el-dropdown-link">面试
+        <el-icon class="el-icon--right"><arrow-down /></el-icon>
+      </span>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item divided @click="openPage('https://www.arryblog.com/interview/htmlcss/')">外链(Array老师)</el-dropdown-item>
+          <el-dropdown-item divided @click="openPage('http://sakuras.group/pdf/test.pdf')">合集(pdf)</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+    <!-- 前端笔记 -->
+    <!-- <el-dropdown class="hidden-dropdown">
       <span class="el-dropdown-link">前端笔记
         <el-icon class="el-icon--right"><arrow-down /></el-icon>
       </span>
@@ -34,9 +50,9 @@
           <el-dropdown-item divided @click="turnPage('Markdown', 'webpack')">webpack</el-dropdown-item>
         </el-dropdown-menu>
       </template>
-    </el-dropdown>
+    </el-dropdown> -->
     <!-- 后端笔记 -->
-    <el-dropdown class="hidden-dropdown">
+    <!-- <el-dropdown class="hidden-dropdown">
       <span class="el-dropdown-link">后端笔记
         <el-icon class="el-icon--right"><arrow-down /></el-icon>
       </span>
@@ -46,7 +62,7 @@
           <el-dropdown-item divided>nginx</el-dropdown-item>
         </el-dropdown-menu>
       </template>
-    </el-dropdown>
+    </el-dropdown> -->
     <!-- 个人中心 trigger="click"-->
     <el-dropdown class="hidden-dropdown">
       <span class="el-dropdown-link">个人中心
@@ -111,11 +127,16 @@ export default {
         turnPage(e)
       }
     }
+    let openPage = (url) =>{
+      // window.location.href = url
+      window.open(url)
+    }
     return {
       turnPage,
       searchVal,
       Search,
       loginOrOut,
+      openPage,
     }
   },
   computed: {
