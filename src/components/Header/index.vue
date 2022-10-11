@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-12 15:56:02
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-04 22:56:24
+ * @LastEditTime: 2022-09-19 10:29:39
 -->
 <template>
   <el-header :class="'myHeader' + (' myHeader-' + $store.getters.deviceType)">
