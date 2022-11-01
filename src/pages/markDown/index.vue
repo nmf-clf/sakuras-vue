@@ -2,17 +2,17 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:29:06
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-06-21 17:31:27
+ * @LastEditTime: 2022-10-31 15:53:04
 -->
 <template>
   <MyHeader />
-  <div v-html="README_MD" class="markdown markdown-body"></div>
+  <!-- <div v-html="README_MD" class="markdown markdown-body"></div> -->
 </template>
 
 <script>
 import 'github-markdown-css' //md样式
 import 'highlight.js/styles/github.css' //代码高亮及行号依赖
-import README_MD from '../../../vue3_start.md'
+// import README_MD from '../../../vue3_start.md'
 import { MyHeader } from '../../components'
 
 export default {
@@ -20,7 +20,7 @@ export default {
   components: { MyHeader },
   data() {
     return {
-      README_MD: README_MD,
+      // README_MD: README_MD,
       static: {
         'vue': 'vue3_start',
         'webpack': 'webpack5'

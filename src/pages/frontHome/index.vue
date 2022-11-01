@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-06 23:49:03
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-06-27 17:03:47
+ * @LastEditTime: 2022-11-01 14:34:41
 -->
 <template>
   <!-- <el-container :class="'frontHome-' + $store.getters.deviceType" class="frontHome"> -->
@@ -59,10 +59,6 @@ export default {
     }
   },
   mounted() {
-      fetch('/api/index/ding.json')
-      .then(res =>{
-          console.log(res);
-      }).catch(err =>{ console.log(err); })
   },
 }
 </script>

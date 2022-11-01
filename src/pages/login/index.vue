@@ -2,22 +2,23 @@
  * @Author: niumengfei
  * @Date: 2022-04-28 23:04:30
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-05-04 23:22:05
+ * @LastEditTime: 2022-11-01 15:29:58
 -->
 <template>
-  <div :class="'login-' + $store.getters.deviceType" class="login">
-    <el-form :model="form" class="login-form">
-      <el-form-item label="账号" class="username">
-        <el-input v-model="form.username" />
-      </el-form-item>
-       <el-form-item label="密码" class="password">
-        <el-input v-model="form.password" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit" class="confirmBtn">登录</el-button>
-      </el-form-item>
-    </el-form>
-  </div>
+    <div :class="'login-' + $store.getters.deviceType" class="login">
+        <el-form :model="form" class="login-form">
+            <el-form-item label="账号" class="username">
+                <el-input v-model="form.username" />
+            </el-form-item>
+            <el-form-item label="密码" class="password">
+                <el-input v-model="form.password" />
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="handleRegister" class="confirmBtn">注册</el-button>
+                <el-button type="primary" @click="handleLogin" class="confirmBtn">登录</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
 
 </template>
 
@@ -25,37 +26,51 @@
 import { reactive } from 'vue'
 import { useStore } from "vuex";
 import { useRouter } from 'vue-router'
+import { Axios } from "@/utils";
 
 export default {
-  name: 'Login',
-  setup(props) {
-    const router = useRouter();
-    const store = useStore();
+    name: 'Login',
+    setup(props) {
+        const router = useRouter();
+        const store = useStore();
 
-    const form = reactive({
-      username: 'admin',
-      password: '',
-    })
-
-    const onSubmit = () => {
-      if(form.username == 'admin' && form.password == '123456'){
-        //假设接口调用完毕 1：存储用户信息 2：跳转到首页
-        store.dispatch('saveUserInfo', { //暂时这样存 需要整体加密
-          username: form.username,
+        const form = reactive({
+            username: '',
+            password: '',
         })
-        router.push({ path: '/' })
-        ElMessage({
-          message: '登录成功',
-          type: 'success',
-          center: true,
-        })
-      }
-    }
-    return {
-      form,
-      onSubmit,
-    }
-  }
+        const handleRegister = () =>{
+            Axios.post('/api/user/register', form)
+            .then(res => {
+                console.log('register-post::',res);
+                ElMessage({
+                    message: res.message,
+                    type: 'success',
+                    center: true,
+                })
+            })
+        }
+        const handleLogin = () => {
+            //假设接口调用完毕 1：存储用户信息 2：跳转到首页
+            Axios.post('/api/user/login', form)
+            .then(res => {
+                console.log('login-post::',res);
+                store.dispatch('saveUserInfo', { //暂时这样存 需要整体加密
+                    ...form
+                })
+                router.push({ path: '/' })
+                ElMessage({
+                    message: res.message,
+                    type: 'success',
+                    center: true,
+                })
+            })
+        }
+        return {
+            form,
+            handleLogin,
+            handleRegister,
+        }
+    },
 }
 </script>
 

@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-06-27 17:08:20
+ * @LastEditTime: 2022-10-31 16:01:08
  */
 const { defineConfig } = require('@vue/cli-service')
 /* 配置按需加载 */
@@ -22,10 +22,13 @@ module.exports = defineConfig({
     resolve: {
       alias: {
         '@': path.join(__dirname, 'src'), //resolve('src')
-      }
+      },
+      // fallback: {
+      //   http: require.resolve("stream-http"),
+      // },
     },
     plugins: [ 
-      AutoImport({ //配置组件库按需引入(官方)
+      AutoImport({ //配置组件库按需引入(官方) 从13MB减少到7MB
         resolvers: [ElementPlusResolver()],
       }),
       Components({ //配置组件库按需引入(官方)
@@ -33,7 +36,7 @@ module.exports = defineConfig({
       }),
     ],
   },
-  chainWebpack: config => {
+  /* chainWebpack: config => {
     config.module
       .rule('md')
       .test(/\.md$/)
@@ -44,7 +47,7 @@ module.exports = defineConfig({
       .use('markdown-loader')
       .loader('markdown-loader')
       .end()
-  },
+  }, */
   devServer:{
     // open: true, //自动打开浏览器
     host: 'localhost', //主机名
@@ -52,7 +55,7 @@ module.exports = defineConfig({
     // autoOpenBrowser: true, 
     proxy:{
       '/api':{
-        target:'https://www.bilibili.com/',
+        target:'http://localhost:3005/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ""

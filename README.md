@@ -32,6 +32,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 + highlightjs-line-numbers.js：md语法高亮，行号显示
 + element-plus：vue3对应的组件库
 + @element-plus/icons-vue: vue3图标库，注意(坑)：CDN导入和自动引入方式官方正在开发中，所以需要手动下载此库，并全局注册图标组件，否则无法正常使用
++ axios：基于promise网络请求库，作用域nodejs和浏览器中
 
 ### devDependencies说明
 + html-loader：将 HTML 导出为字符串。当编译器需要时，HTML 会被最小化。
