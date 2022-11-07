@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-04 23:17:24
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-06-27 20:53:44
+ * @LastEditTime: 2022-11-07 16:32:47
  */
 /* 引入路由模块，和vue2.0方式不同 */
 import { createRouter, createWebHashHistory } from 'vue-router'//导入
@@ -10,9 +10,9 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 // console.log(createRouter);
 // 1. 定义路由组件 (也可以从其他文件导入)
-import FrontHome from '@/pages/frontHome'
-import markDown from '@/pages/markDown'
-import Login from '@/pages/login'
+import FrontHome from '@/views/frontHome'
+import markDown from '@/views/markDown'
+import Login from '@/views/login'
 
 // 简单配置  进度条,可以不配置：在axios中我们不再做配置，以用来区分。
 // NProgress.inc(0.2)
@@ -27,7 +27,7 @@ const routes = [
         children: [
             {
               path: 'frontHome',
-              component: () => import('@/pages/frontHome/index'),
+              component: () => import('@/views/frontHome/index'),
               name: 'FrontHome',
             }
         ]
