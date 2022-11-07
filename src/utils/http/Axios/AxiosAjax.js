@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-10-29 14:36:35
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-11-01 15:39:01
+ * @LastEditTime: 2022-11-07 13:32:39
  */
 import axios from "axios";
 import requestLog from '../../Tnlog'
@@ -13,8 +13,10 @@ const AxiosAjax = axios.create({
     baseURL: (function (e) {
         // if (process.env.NODE_DEV !== 'production' && window.TIAN.proxy === 'true') {
         //     return '';
-        // } 
-        return 'http://localhost:9000';
+        // }
+        // return 'http://localhost:9000/local-api';
+        return 'https://www.sakuras.group';
+        // return 'http://localhost:9000'
     })(),
     withCredentials: false,
     timeout: 50000, //请求超时时间
@@ -23,6 +25,7 @@ const AxiosAjax = axios.create({
 
 //请求拦截器
 AxiosAjax.interceptors.request.use(config => {
+    console.log('xxxx', config);
     //可以在此处添加请求Header
     requestLog(`发起['${config.url}]：参数=> ${JSON.stringify(config.data)}`);
     return config;

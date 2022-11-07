@@ -60,7 +60,7 @@
   ],
   "runDependencies": {
     "dev": "http://localhost:9000",
-    "pro": "http://localhost:9000"
+    "pro": "https://www.sakuras.group"
   },
   "runEnv": "sit"
 }

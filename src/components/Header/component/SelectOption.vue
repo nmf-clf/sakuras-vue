@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-27 17:25:41
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-07-03 23:42:52
+ * @LastEditTime: 2022-11-01 17:01:03
 -->
 <template>
   <div :class="'rg-options' + (' rg-options-' + $store.getters.deviceType)">
@@ -27,7 +27,7 @@
       <span class="el-dropdown-link" @click="openPage('https://sakuras.group/sakuras-docs/')">学习笔记</span>
     </el-dropdown>
     <!-- 面试 -->
-    <el-dropdown class="hidden-dropdown">
+    <!-- <el-dropdown class="hidden-dropdown">
       <span class="el-dropdown-link">面试
         <el-icon class="el-icon--right"><arrow-down /></el-icon>
       </span>
@@ -37,7 +37,7 @@
           <el-dropdown-item divided @click="openPage('http://sakuras.group/pdf/test.pdf')">合集(pdf)</el-dropdown-item>
         </el-dropdown-menu>
       </template>
-    </el-dropdown>
+    </el-dropdown> -->
     <!-- 前端笔记 -->
     <!-- <el-dropdown class="hidden-dropdown">
       <span class="el-dropdown-link">前端笔记

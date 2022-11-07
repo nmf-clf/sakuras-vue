@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-10-31 16:01:08
+ * @LastEditTime: 2022-11-07 11:34:47
  */
 const { defineConfig } = require('@vue/cli-service')
 /* 配置按需加载 */
@@ -54,13 +54,17 @@ module.exports = defineConfig({
     port: '9000', //端口号
     // autoOpenBrowser: true, 
     proxy:{
-      '/api':{
-        target:'http://localhost:3005/',
+      '/local-api': { //连接本地后端服务时使用此代理
+        target: 'http://localhost:5555/',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ""
+          '^/local-api': ""
         }
-      }
+      },
+      '/sakuras-api': { //连接远程后端服务时使用此代理
+        target: 'https://sakuras.group/',
+        changeOrigin: true,
+      },
     }
   }
 })
