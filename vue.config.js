@@ -2,9 +2,10 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:27
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-11-07 11:34:47
+ * @LastEditTime: 2022-12-08 17:53:03
  */
 const { defineConfig } = require('@vue/cli-service')
+const webpack = require('webpack')
 /* 配置按需加载 */
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
@@ -33,6 +34,9 @@ module.exports = defineConfig({
       }),
       Components({ //配置组件库按需引入(官方)
         resolvers: [ElementPlusResolver()],
+      }),
+      new webpack.DefinePlugin({
+            API_CONFIG: JSON.stringify({a:'1'})
       }),
     ],
   },

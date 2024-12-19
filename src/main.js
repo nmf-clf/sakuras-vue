@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-04-01 18:25:28
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-10-29 17:44:14
+ * @LastEditTime: 2022-12-08 17:57:35
  */
 import { createApp } from 'vue'
 
@@ -14,7 +14,7 @@ import 'animate.css';
 const app = createApp(App) //创建并挂载根实例 //createApp(App).mount('#app') //原脚手架写法
 
 plusIcons.map(component => app.component(component.name, component) )
-
+console.log(API_CONFIG);
 app.use(router)
 app.use(store) // 将 store 实例作为插件安装
 app.mount('#app')

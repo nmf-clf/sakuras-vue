@@ -2,7 +2,7 @@
  * @Author: niumengfei
  * @Date: 2022-10-29 14:36:35
  * @LastEditors: niumengfei
- * @LastEditTime: 2022-11-07 13:32:39
+ * @LastEditTime: 2022-12-06 18:07:55
  */
 import axios from "axios";
 import requestLog from '../../Tnlog'
@@ -15,8 +15,8 @@ const AxiosAjax = axios.create({
         //     return '';
         // }
         // return 'http://localhost:9000/local-api';
-        return 'https://www.sakuras.group';
-        // return 'http://localhost:9000'
+        // return 'https://www.sakuras.group';
+        return 'http://localhost:9000'
     })(),
     withCredentials: false,
     timeout: 50000, //请求超时时间
